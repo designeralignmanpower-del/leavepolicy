@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="description" content="Align Staffing - Employee Leave Policy">
+    <title>Align Staffing - Leave Policy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gradient-1: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+            --gradient-2: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --gradient-3: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --gradient-4: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            --gradient-5: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, hsla(199, 89%, 48%, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 80% 0%, hsla(189, 94%, 43%, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 0% 50%, hsla(204, 94%, 94%, 0.2) 0px, transparent 50%),
+                             radial-gradient(at 80% 50%, hsla(199, 89%, 48%, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 0% 100%, hsla(204, 100%, 97%, 0.2) 0px, transparent 50%),
+                             radial-gradient(at 80% 100%, hsla(217, 91%, 60%, 0.15) 0px, transparent 50%);
+            
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-light: #0f172a;
+            --text-muted: #475569;
+            --shadow: 0 10px 40px rgba(14, 165, 233, 0.15);
+            --glow: 0 0 40px rgba(14, 165, 233, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.6); }
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-mesh);
+            z-index: 0;
+            animation: gradientShift 15s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .glass-blur {
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            background: var(--bg-card);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 20px rgba(14, 165, 233, 0.15);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .logo {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .language-selector {
+            position: relative;
+            animation: slideInLeft 0.8s ease 0.2s both;
+        }
+
+        .lang-button {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .lang-button:hover::before {
+            left: 100%;
+        }
+
+        .lang-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.8rem);
+            right: 0;
+            min-width: 200px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: none;
+            overflow: hidden;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 1rem 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-weight: 500;
+        }
+
+        .lang-option:hover {
+            background: rgba(14, 165, 233, 0.15);
+            padding-left: 1.8rem;
+        }
+
+        .lang-option.active {
+            background: var(--gradient-1);
+            font-weight: 600;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .qr-section {
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .qr-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-3);
+        }
+
+        .qr-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .qr-link {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .qr-container {
+            display: inline-block;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.2);
+            margin: 1.5rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .qr-link:hover .qr-container {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 50px rgba(14, 165, 233, 0.35);
+        }
+
+        .qr-code {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .click-scan-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 0.8rem;
+            background: var(--gradient-4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .qr-description {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .policy-section {
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .policy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-2);
+        }
+
+        .policy-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .policy-list {
+            list-style: none;
+            counter-reset: policy-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .policy-item {
+            counter-increment: policy-counter;
+            padding: 2rem;
+            padding-left: 5rem;
+            background: rgba(14, 165, 233, 0.08);
+            border-radius: 20px;
+            border-left: 5px solid;
+            border-image-slice: 1;
+            border-image-source: var(--gradient-1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            animation: fadeInUp 0.6s ease both;
+            animation-delay: calc(var(--item-index) * 0.1s);
+        }
+
+        .policy-item:nth-child(1) { --item-index: 1; }
+        .policy-item:nth-child(2) { --item-index: 2; }
+        .policy-item:nth-child(3) { --item-index: 3; }
+        .policy-item:nth-child(4) { --item-index: 4; }
+        .policy-item:nth-child(5) { --item-index: 5; }
+        .policy-item:nth-child(6) { --item-index: 6; }
+        .policy-item:nth-child(7) { --item-index: 7; }
+        .policy-item:nth-child(8) { --item-index: 8; }
+
+        .policy-item:hover {
+            transform: translateX(10px);
+            background: rgba(14, 165, 233, 0.12);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.2);
+        }
+
+        .policy-item::before {
+            content: counter(policy-counter);
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .policy-item-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .policy-item-content {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 20px rgba(14, 165, 233, 0.15);
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .footer-highlight {
+            background: var(--gradient-5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .globe-icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                height: 45px;
+            }
+
+            main {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+
+            .qr-section,
+            .policy-section {
+                padding: 2rem 1.5rem;
+                border-radius: 25px;
+            }
+
+            .qr-title {
+                font-size: 1.6rem;
+            }
+
+            .policy-title {
+                font-size: 1.8rem;
+            }
+
+            .policy-item {
+                padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+            }
+
+            .policy-item::before {
+                left: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 0.95rem;
+            }
+
+            .policy-item-title {
+                font-size: 1rem;
+            }
+
+            .policy-item-content {
+                font-size: 0.9rem;
+            }
+
+            .qr-code {
+                max-width: 240px;
+            }
+
+            .lang-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .click-scan-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header class="glass-blur">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/47cjm0fg/image.png" alt="Align Staffing Logo" class="logo">
+            </div>
+            <div class="language-selector">
+                <button class="lang-button" id="langButton">
+                    <svg class="globe-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span id="currentLang">English</span>
+                </button>
+                <div class="lang-dropdown glass-blur" id="langDropdown">
+                    <div class="lang-option active" data-lang="en">🇬🇧 English</div>
+                    <div class="lang-option" data-lang="hi">🇮🇳 हिन्दी</div>
+                    <div class="lang-option" data-lang="ur">🇵🇰 اردو</div>
+                    <div class="lang-option" data-lang="ne">🇳🇵 नेपाली</div>
+                    <div class="lang-option" data-lang="ta">🇮🇳 தமிழ்</div>
+                    <div class="lang-option" data-lang="ml">🇮🇳 മലയാളം</div>
+                    <div class="lang-option" data-lang="te">🇮🇳 తెలుగు</div>
+                    <div class="lang-option" data-lang="tl">🇵🇭 Tagalog</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="qr-section glass-blur">
+            <h2 class="qr-title" id="qrTitle">Access ESS Portal</h2>
+            <a href="https://olivehrms.alignmanpower.com:8090/Account" target="_blank" rel="noopener noreferrer" class="qr-link">
+                <div class="qr-container">
+                    <img src="https://i.postimg.cc/wRqPqdrQ/image.png" alt="ESS QR Code" class="qr-code">
+                </div>
+                <p class="click-scan-text" id="clickScanText">Click or Scan</p>
+            </a>
+            <p class="qr-description" id="qrDescription">Scan this QR code to access the Employee Self-Service portal</p>
+        </section>
+
+        <section class="policy-section glass-blur">
+            <h1 class="policy-title" id="policyTitle">ANNUAL & EMERGENCY LEAVE - DELIVERY DEPARTMENT</h1>
+            <ul class="policy-list" id="policyList"></ul>
+        </section>
+    </main>
+
+    <footer class="glass-blur">
+        <div class="footer-content" id="footerText">
+            <span class="footer-highlight">For queries,</span> please speak to your Delivery supervisor before you apply for leave or for any clarifications.
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                qrTitle: "Access ESS Portal",
+                clickScanText: "Click or Scan",
+                qrDescription: "Scan this QR code to access the Employee Self-Service portal",
+                policyTitle: "ANNUAL & EMERGENCY LEAVE - DELIVERY DEPARTMENT",
+                policies: [
+                    {
+                        title: "Leave Request Timeline",
+                        content: "All leave requests must be submitted at least 30 days in advance through the ESS. Verbal / WhatsApp requests are not accepted."
+                    },
+                    {
+                        title: "Approval Requirement",
+                        content: "Leave approval in the system by the Supervisor and Delivery Division Head. Please plan for leave ONLY AFTER APPROVAL IN ESS."
+                    },
+                    {
+                        title: "Annual Leave Eligibility",
+                        content: "Employees to complete a minimum of 18 months to be eligible for leave. Leave will be for a max period of 60 days and depending on their eligibility. All other leaves will be treated on a case to case basis."
+                    },
+                    {
+                        title: "Pending Dues Clearance",
+                        content: "Employees proceeding on Annual Leave must clear all pending amounts before departure. There could be a requirement for keeping a Guarantor if there is pending amount payable or visa renewal is due. Any money / guarantee will be released when the employees returns for work and completes required formalities."
+                    },
+                    {
+                        title: "Service Charge Waiver",
+                        content: "Service charge will NOT be levied during the annual leave period."
+                    },
+                    {
+                        title: "Emergency Leave Documentation",
+                        content: "Required documents must be submitted to the Supervisor and uploaded in ESS in advance before leave."
+                    },
+                    {
+                        title: "Late Return Penalty",
+                        content: "Late return penalties for returning later than the approved leave date, will be applied as per company policy."
+                    },
+                    {
+                        title: "Compliance & Conduct",
+                        content: "Approvals depend on operational requirements, client approvals and busy and lean periods."
+                    }
+                ],
+                footer: "For queries, please speak to your Delivery supervisor before you apply for leave or for any clarifications.",
+                langName: "English"
+            },
+            hi: {
+                qrTitle: "ESS पोर्टल तक पहुंचें",
+                clickScanText: "क्लिक या स्कैन करें",
+                qrDescription: "कर्मचारी स्व-सेवा पोर्टल तक पहुंचने के लिए इस QR कोड को स्कैन करें",
+                policyTitle: "वार्षिक और आपातकालीन छुट्टी",
+                policies: [
+                    {
+                        title: "छुट्टी अनुरोध समयरेखा",
+                        content: "सभी छुट्टी अनुरोधों को ESS के माध्यम से कम से कम 30 दिन पहले जमा किया जाना चाहिए। मौखिक / व्हाट्सएप अनुरोध स्वीकार नहीं किए जाते हैं।"
+                    },
+                    {
+                        title: "अनुमोदन आवश्यकता",
+                        content: "पर्यवेक्षक और डिलीवरी डिवीजन प्रमुख द्वारा सिस्टम में छुट्टी की मंजूरी। कृपया केवल ESS में अनुमोदन के बाद ही छुट्टी की योजना बनाएं।"
+                    },
+                    {
+                        title: "वार्षिक छुट्टी पात्रता",
+                        content: "कर्मचारियों को छुट्टी के लिए पात्र होने के लिए न्यूनतम 18 महीने पूरे करने होंगे। छुट्टी अधिकतम 60 दिनों की अवधि के लिए होगी और उनकी पात्रता पर निर्भर करेगी। अन्य सभी छुट्टियों को केस टू केस आधार पर माना जाएगा।"
+                    },
+                    {
+                        title: "लंबित बकाया निकासी",
+                        content: "वार्षिक छुट्टी पर जाने वाले कर्मचारियों को प्रस्थान से पहले सभी लंबित राशि को साफ करना होगा। यदि कोई राशि देय है या वीजा नवीनीकरण देय है तो गारंटर रखने की आवश्यकता हो सकती है। जब कर्मचारी काम के लिए वापस आता है और आवश्यक औपचारिकताएं पूरी करता है तो कोई भी पैसा / गारंटी जारी की जाएगी।"
+                    },
+                    {
+                        title: "सेवा शुल्क छूट",
+                        content: "वार्षिक छुट्टी अवधि के दौरान सेवा शुल्क नहीं लगाया जाएगा।"
+                    },
+                    {
+                        title: "आपातकालीन छुट्टी दस्तावेज़ीकरण",
+                        content: "छुट्टी से पहले आवश्यक दस्तावेज पर्यवेक्षक को प्रस्तुत किए जाने चाहिए और ESS में अपलोड किए जाने चाहिए।"
+                    },
+                    {
+                        title: "देर से वापसी का जुर्माना",
+                        content: "स्वीकृत छुट्टी की तारीख से बाद में वापस आने के लिए देर से वापसी का जुर्माना, कंपनी की नीति के अनुसार लागू किया जाएगा।"
+                    },
+                    {
+                        title: "अनुपालन और आचरण",
+                        content: "अनुमोदन परिचालन आवश्यकताओं, ग्राहक अनुमोदन और व्यस्त और सुस्त अवधि पर निर्भर करता है।"
+                    }
+                ],
+                footer: "प्रश्नों के लिए, कृपया अपनी डिलीवरी पर्यवेक्षक से बात करें इससे पहले कि आप छुट्टी के लिए आवेदन करें या किसी स्पष्टीकरण के लिए।",
+                langName: "हिन्दी"
+            },
+            ur: {
+                qrTitle: "ESS پورٹل تک رسائی",
+                clickScanText: "کلک یا اسکین کریں",
+                qrDescription: "ملازم سیلف سروس پورٹل تک رسائی کے لیے اس QR کوڈ کو اسکین کریں",
+                policyTitle: "سالانہ اور ہنگامی چھٹی",
+                policies: [
+                    {
+                        title: "چھٹی کی درخواست کی ٹائم لائن",
+                        content: "تمام چھٹیوں کی درخواستیں ESS کے ذریعے کم از کم 30 دن پہلے جمع کرانی ہوں گی۔ زبانی / واٹس ایپ درخواستیں قبول نہیں کی جاتیں۔"
+                    },
+                    {
+                        title: "منظوری کی ضرورت",
+                        content: "سپروائزر اور ڈیلیوری ڈویژن ہیڈ کی طرف سے سسٹم میں چھٹی کی منظوری۔ براہ کرم صرف ESS میں منظوری کے بعد ہی چھٹی کی منصوبہ بندی کریں۔"
+                    },
+                    {
+                        title: "سالانہ چھٹی کی اہلیت",
+                        content: "ملازمین کو چھٹی کے اہل ہونے کے لیے کم از کم 18 ماہ مکمل کرنے ہوں گے۔ چھٹی زیادہ سے زیادہ 60 دن کی مدت کے لیے ہوگی اور ان کی اہلیت پر منحصر ہوگی۔ دیگر تمام چھٹیوں کا کیس ٹو کیس بنیاد پر علاج کیا جائے گا۔"
+                    },
+                    {
+                        title: "زیر التواء واجبات کی کلیئرنس",
+                        content: "سالانہ چھٹی پر جانے والے ملازمین کو روانگی سے پہلے تمام زیر التواء رقوم صاف کرنا ہوں گی۔ اگر کوئی رقم واجب الادا ہے یا ویزا کی تجدید واجب ہے تو ضامن رکھنے کی ضرورت ہو سکتی ہے۔ جب ملازم کام کے لیے واپس آتا ہے اور مطلوبہ رسمی کارروائیاں مکمل کرتا ہے تو کوئی بھی رقم / ضمانت جاری کی جائے گی۔"
+                    },
+                    {
+                        title: "سروس چارج چھوٹ",
+                        content: "سالانہ چھٹی کی مدت کے دوران سروس چارج نہیں لگایا جائے گا۔"
+                    },
+                    {
+                        title: "ہنگامی چھٹی کی دستاویزات",
+                        content: "مطلوبہ دستاویزات چھٹی سے پہلے سپروائزر کو جمع کرانی ہوں گی اور ESS میں اپ لوڈ کرنا ہوں گی۔"
+                    },
+                    {
+                        title: "تاخیر سے واپسی کا جرمانہ",
+                        content: "منظور شدہ چھٹی کی تاریخ سے بعد میں واپس آنے کے لیے تاخیر سے واپسی کے جرمانے، کمپنی کی پالیسی کے مطابق لاگو کیے جائیں گے۔"
+                    },
+                    {
+                        title: "تعمیل اور طرز عمل",
+                        content: "منظوری آپریشنل ضروریات، کلائنٹ کی منظوری اور مصروف اور کم دوروں پر منحصر ہے۔"
+                    }
+                ],
+                footer: "سوالات کے لیے، براہ کرم اپنے ڈیلیوری سپروائزر سے بات کریں اس سے پہلے کہ آپ چھٹی کے لیے درخواست دیں یا کسی وضاحت کے لیے۔",
+                langName: "اردو"
+            },
+            ne: {
+                qrTitle: "ESS पोर्टल पहुँच गर्नुहोस्",
+                clickScanText: "क्लिक वा स्क्यान गर्नुहोस्",
+                qrDescription: "कर्मचारी सेल्फ-सर्भिस पोर्टल पहुँच गर्न यो QR कोड स्क्यान गर्नुहोस्",
+                policyTitle: "वार्षिक र आपतकालीन बिदा",
+                policies: [
+                    {
+                        title: "बिदा अनुरोध समयरेखा",
+                        content: "सबै बिदा अनुरोधहरू ESS मार्फत कम्तिमा 30 दिन अघि पेश गरिनुपर्छ। मौखिक / WhatsApp अनुरोधहरू स्वीकार गरिँदैन।"
+                    },
+                    {
+                        title: "स्वीकृति आवश्यकता",
+                        content: "पर्यवेक्षक र डिलिभरी डिभिजन प्रमुखद्वारा प्रणालीमा बिदा स्वीकृति। कृपया ESS मा स्वीकृति पछि मात्र बिदाको लागि योजना बनाउनुहोस्।"
+                    },
+                    {
+                        title: "वार्षिक बिदा योग्यता",
+                        content: "कर्मचारीहरूले बिदाको लागि योग्य हुन न्यूनतम 18 महिना पूरा गर्नुपर्छ। बिदा अधिकतम 60 दिनको अवधिको लागि हुनेछ र तिनीहरूको योग्यतामा निर्भर गर्दछ। अन्य सबै बिदाहरू केस टु केस आधारमा व्यवहार गरिनेछ।"
+                    },
+                    {
+                        title: "बाँकी बक्यौता खाली गर्ने",
+                        content: "वार्षिक बिदामा जाने कर्मचारीहरूले प्रस्थान गर्नु अघि सबै बाँकी रकमहरू खाली गर्नुपर्छ। यदि कुनै रकम तिर्नुपर्ने छ वा भिसा नवीकरण बाँकी छ भने जमानतदार राख्ने आवश्यकता हुन सक्छ। कर्मचारी कामको लागि फर्किन्छ र आवश्यक औपचारिकताहरू पूरा गर्दा कुनै पनि पैसा / जमानत जारी गरिनेछ।"
+                    },
+                    {
+                        title: "सेवा शुल्क छुट",
+                        content: "वार्षिक बिदा अवधिमा सेवा शुल्क लाग्ने छैन।"
+                    },
+                    {
+                        title: "आपतकालीन बिदा कागजात",
+                        content: "आवश्यक कागजातहरू बिदा अघि पर्यवेक्षकलाई पेश गरिनुपर्छ र ESS मा अपलोड गरिनुपर्छ।"
+                    },
+                    {
+                        title: "ढिलो फर्कने जरिवाना",
+                        content: "स्वीकृत बिदा मिति पछि फर्कनको लागि ढिलो फर्कने जरिवाना, कम्पनी नीति अनुसार लागू गरिनेछ।"
+                    },
+                    {
+                        title: "अनुपालन र आचरण",
+                        content: "स्वीकृतिहरू परिचालन आवश्यकताहरू, ग्राहक स्वीकृति र व्यस्त र सुस्त अवधिहरूमा निर्भर गर्दछ।"
+                    }
+                ],
+                footer: "प्रश्नहरूको लागि, कृपया तपाईंले बिदाको लागि आवेदन दिनु अघि वा कुनै स्पष्टीकरणको लागि आफ्नो डिलिभरी पर्यवेक्षकसँग कुरा गर्नुहोस्।",
+                langName: "नेपाली"
+            },
+            ta: {
+                qrTitle: "ESS போர்ட்டலை அணுகவும்",
+                clickScanText: "கிளிக் அல்லது ஸ்கேன் செய்யவும்",
+                qrDescription: "ஊழியர் சுய-சேவை போர்ட்டலை அணுக இந்த QR குறியீட்டை ஸ்கேன் செய்யவும்",
+                policyTitle: "வருடாந்திர மற்றும் அவசர விடுப்பு",
+                policies: [
+                    {
+                        title: "விடுப்பு கோரிக்கை காலவரிசை",
+                        content: "அனைத்து விடுப்பு கோரிக்கைகளும் ESS மூலம் குறைந்தது 30 நாட்களுக்கு முன்பே சமர்ப்பிக்கப்பட வேண்டும். வாய்வழி / WhatsApp கோரிக்கைகள் ஏற்கப்படாது."
+                    },
+                    {
+                        title: "அனுமதி தேவை",
+                        content: "மேற்பார்வையாளர் மற்றும் டெலிவரி பிரிவு தலைவரால் அமைப்பில் விடுப்பு அனுமதி. தயவுசெய்து ESS இல் அனுமதிக்குப் பிறகு மட்டுமே விடுப்புக்கு திட்டமிடவும்."
+                    },
+                    {
+                        title: "வருடாந்திர விடுப்பு தகுதி",
+                        content: "ஊழியர்கள் விடுப்புக்கு தகுதிபெற குறைந்தபட்சம் 18 மாதங்களை பூர்த்தி செய்ய வேண்டும். விடுப்பு அதிகபட்சமாக 60 நாட்கள் காலத்திற்கு இருக்கும் மற்றும் அவர்களின் தகுதியைப் பொறுத்தது. மற்ற அனைத்து விடுப்புகளும் வழக்கு அடிப்படையில் கருதப்படும்."
+                    },
+                    {
+                        title: "நிலுவை நிதி அனுமதி",
+                        content: "வருடாந்திர விடுப்புக்கு செல்லும் ஊழியர்கள் புறப்படுவதற்கு முன் அனைத்து நிலுவை தொகைகளையும் அழிக்க வேண்டும். ஏதேனும் தொகை செலுத்த வேண்டியிருந்தால் அல்லது விசா புதுப்பிப்பு நிலுவையில் இருந்தால் உத்தரவாதம் வைப்பதற்கான தேவை இருக்கலாம். ஊழியர் வேலைக்கு திரும்பி தேவையான சம்பிரதாயங்களை பூர்த்தி செய்தவுடன் எந்த பணமோ / உத்தரவாதமும் விடுவிக்கப்படும்."
+                    },
+                    {
+                        title: "சேவை கட்டண விலக்கு",
+                        content: "வருடாந்திர விடுப்பு காலத்தில் சேவை கட்டணம் விதிக்கப்படாது."
+                    },
+                    {
+                        title: "அவசர விடுப்பு ஆவணங்கள்",
+                        content: "தேவையான ஆவணங்கள் விடுப்புக்கு முன் மேற்பார்வையாளரிடம் சமர்ப்பிக்கப்பட வேண்டும் மற்றும் ESS இல் பதிவேற்றப்பட வேண்டும்."
+                    },
+                    {
+                        title: "தாமதமாக திரும்புதல் அபராதம்",
+                        content: "அனுமதிக்கப்பட்ட விடுப்பு தேதிக்குப் பிறகு திரும்புவதற்கான தாமத திரும்பல் அபராதங்கள், நிறுவன கொள்கையின்படி பயன்படுத்தப்படும்."
+                    },
+                    {
+                        title: "இணக்கம் & நடத்தை",
+                        content: "அனுமதிகள் செயல்பாட்டு தேவைகள், வாடிக்கையாளர் அனுமதிகள் மற்றும் பிஸியான மற்றும் குறைவான காலங்களைப் பொறுத்தது."
+                    }
+                ],
+                footer: "கேள்விகளுக்கு, தயவுசெய்து நீங்கள் விடுப்புக்கு விண்ணப்பிக்கும் முன் அல்லது ஏதேனும் தெளிவுபடுத்தலுக்கு உங்கள் டெலிவரி மேற்பார்வையாளரிடம் பேசவும்.",
+                langName: "தமிழ்"
+            },
+            ml: {
+                qrTitle: "ESS പോർട്ടൽ ആക്‌സസ് ചെയ്യുക",
+                clickScanText: "ക്ലിക്ക് അല്ലെങ്കിൽ സ്കാൻ ചെയ്യുക",
+                qrDescription: "ജീവനക്കാരുടെ സെൽഫ്-സർവീസ് പോർട്ടൽ ആക്‌സസ് ചെയ്യാൻ ഈ QR കോഡ് സ്കാൻ ചെയ്യുക",
+                policyTitle: "വാർഷിക, അടിയന്തര അവധി",
+                policies: [
+                    {
+                        title: "അവധി അഭ്യർത്ഥന സമയരേഖ",
+                        content: "എല്ലാ അവധി അഭ്യർത്ഥനകളും ESS വഴി കുറഞ്ഞത് 30 ദിവസം മുമ്പെങ്കിലും സമർപ്പിക്കേണ്ടതാണ്. വാക്കാലുള്ള / WhatsApp അഭ്യർത്ഥനകൾ സ്വീകരിക്കില്ല."
+                    },
+                    {
+                        title: "അംഗീകാര ആവശ്യം",
+                        content: "സൂപ്പർവൈസറും ഡെലിവറി ഡിവിഷൻ ഹെഡും സിസ്റ്റത്തിൽ അവധി അംഗീകാരം. ദയവായി ESS-ൽ അംഗീകാരം കിട്ടിയതിനുശേഷം മാത്രം അവധിക്ക് പ്ലാൻ ചെയ്യുക."
+                    },
+                    {
+                        title: "വാർഷിക അവധി യോഗ്യത",
+                        content: "ജീവനക്കാർ അവധിക്ക് യോഗ്യത നേടാൻ കുറഞ്ഞത് 18 മാസം പൂർത്തിയാക്കണം. അവധി പരമാവധി 60 ദിവസത്തേക്ക് ആയിരിക്കും, അവരുടെ യോഗ്യതയെ ആശ്രയിച്ചിരിക്കുന്നു. മറ്റെല്ലാ അവധികളും കേസ് ടു കേസ് അടിസ്ഥാനത്തിൽ കൈകാര്യം ചെയ്യും."
+                    },
+                    {
+                        title: "കുടിശ്ശിക തുക ക്ലിയറൻസ്",
+                        content: "വാർഷിക അവധിയിൽ പോകുന്ന ജീവനക്കാർ പുറപ്പെടുന്നതിന് മുമ്പ് എല്ലാ കുടിശ്ശിക തുകകളും ക്ലിയർ ചെയ്യണം. എന്തെങ്കിലും തുക നൽകേണ്ടതായി വന്നാലോ വിസ പുതുക്കൽ വരാനിരിക്കുന്നുവെങ്കിലോ ഗ്യാരണ്ടർ സൂക്ഷിക്കുന്നതിനുള്ള ആവശ്യകത ഉണ്ടാകാം. ജീവനക്കാരൻ ജോലിക്ക് മടങ്ങുകയും ആവശ്യമായ ഔപചാരികതകൾ പൂർത്തിയാക്കുകയും ചെയ്യുമ്പോൾ ഏത് പണവും / ഗ്യാരണ്ടിയും റിലീസ് ചെയ്യും."
+                    },
+                    {
+                        title: "സേവന ചാർജ് ഇളവ്",
+                        content: "വാർഷിക അവധി കാലയളവിൽ സേവന ചാർജ് ഈടാക്കില്ല."
+                    },
+                    {
+                        title: "അടിയന്തര അവധി രേഖകൾ",
+                        content: "ആവശ്യമായ രേഖകൾ അവധിക്ക് മുമ്പ് സൂപ്പർവൈസർക്ക് സമർപ്പിക്കുകയും ESS-ൽ അപ്‌ലോഡ് ചെയ്യുകയും വേണം."
+                    },
+                    {
+                        title: "വൈകി തിരിച്ചെത്തൽ പിഴ",
+                        content: "അംഗീകൃത അവധി തീയതിക്ക് ശേഷം തിരിച്ചെത്തുന്നതിനുള്ള വൈകി തിരിച്ചെത്തൽ പിഴകൾ, കമ്പനി നയപ്രകാരം പ്രയോഗിക്കും."
+                    },
+                    {
+                        title: "അനുസരണവും പെരുമാറ്റവും",
+                        content: "അംഗീകാരങ്ങൾ പ്രവർത്തന ആവശ്യകതകൾ, ക്ലയന്റ് അംഗീകാരങ്ങൾ, തിരക്കേറിയതും കുറഞ്ഞതുമായ കാലയളവുകളെ ആശ്രയിച്ചിരിക്കുന്നു."
+                    }
+                ],
+                footer: "ചോദ്യങ്ങൾക്ക്, ദയവായി നിങ്ങൾ അവധിക്ക് അപേക്ഷിക്കുന്നതിനുമുമ്പോ ഏതെങ്കിലും വ്യക്തതകൾക്കോ നിങ്ങളുടെ ഡെലിവറി സൂപ്പർവൈസറുമായി സംസാരിക്കുക.",
+                langName: "മലയാളം"
+            },
+            te: {
+                qrTitle: "ESS పోర్టల్‌ను యాక్సెస్ చేయండి",
+                clickScanText: "క్లిక్ లేదా స్కాన్ చేయండి",
+                qrDescription: "ఉద్యోగి సెల్ఫ్-సర్వీస్ పోర్టల్‌ను యాక్సెస్ చేయడానికి ఈ QR కోడ్‌ను స్కాన్ చేయండి",
+                policyTitle: "వార్షిక మరియు అత్యవసర సెలవు",
+                policies: [
+                    {
+                        title: "సెలవు అభ్యర్థన కాలక్రమం",
+                        content: "అన్ని సెలవు అభ్యర్థనలు ESS ద్వారా కనీసం 30 రోజుల ముందుగా సమర్పించాలి. మౌఖిక / WhatsApp అభ్యర్థనలు అంగీకరించబడవు."
+                    },
+                    {
+                        title: "ఆమోదం అవసరం",
+                        content: "సూపర్‌వైజర్ మరియు డెలివరీ డివిజన్ హెడ్ ద్వారా సిస్టమ్‌లో సెలవు ఆమోదం. దయచేసి ESS లో ఆమోదం తర్వాత మాత్రమే సెలవు కోసం ప్లాన్ చేయండి."
+                    },
+                    {
+                        title: "వార్షిక సెలవు అర్హత",
+                        content: "ఉద్యోగులు సెలవుకు అర్హత పొందడానికి కనీసం 18 నెలలు పూర్తి చేయాలి. సెలవు గరిష్టంగా 60 రోజుల వ్యవధి వరకు ఉంటుంది మరియు వారి అర్హతపై ఆధారపడి ఉంటుంది. అన్ని ఇతర సెలవులు కేసు టు కేసు ప్రాతిపదికన పరిగణించబడతాయి."
+                    },
+                    {
+                        title: "పెండింగ్ బాకీల క్లియరెన్స్",
+                        content: "వార్షిక సెలవుపై వెళ్లే ఉద్యోగులు బయలుదేరే ముందు అన్ని పెండింగ్ మొత్తాలను క్లియర్ చేయాలి. ఏదైనా మొత్తం చెల్లించాల్సి ఉంటే లేదా వీసా పునరుద్ధరణ వాయిదా పడితే గ్యారెంటర్ ఉంచే అవసరం ఉండవచ్చు. ఉద్యోగి పనికి తిరిగి వచ్చి అవసరమైన ఫార్మాలిటీలు పూర్తి చేసినప్పుడు ఏదైనా డబ్బు / గ్యారెంటీ విడుదల చేయబడుతుంది."
+                    },
+                    {
+                        title: "సేవా ఛార్జీ మినహాయింపు",
+                        content: "వార్షిక సెలవు కాలంలో సేవా ఛార్జీ విధించబడదు."
+                    },
+                    {
+                        title: "అత్యవసర సెలవు డాక్యుమెంటేషన్",
+                        content: "అవసరమైన పత్రాలు సెలవుకు ముందు సూపర్‌వైజర్‌కు సమర్పించాలి మరియు ESS లో అప్‌లోడ్ చేయాలి."
+                    },
+                    {
+                        title: "ఆలస్యంగా తిరిగి రావడం జరిమానా",
+                        content: "ఆమోదించబడిన సెలవు తేదీ తర్వాత తిరిగి రావడానికి ఆలస్యంగా తిరిగి రావడం జరిమానాలు, కంపెనీ విధానం ప్రకారం వర్తించబడతాయి."
+                    },
+                    {
+                        title: "అనుగుణ్యత & ప్రవర్తన",
+                        content: "ఆమోదాలు కార్యాచరణ అవసరాలు, క్లయింట్ ఆమోదాలు మరియు బిజీ మరియు తక్కువ కాలాలపై ఆధారపడి ఉంటాయి."
+                    }
+                ],
+                footer: "ప్రశ్నల కోసం, దయచేసి మీరు సెలవు కోసం దరఖాస్తు చేసుకునే ముందు లేదా ఏదైనా స్పష్టీకరణ కోసం మీ డెలివరీ సూపర్‌వైజర్‌తో మాట్లాడండి.",
+                langName: "తెలుగు"
+            },
+            tl: {
+                qrTitle: "I-access ang ESS Portal",
+                clickScanText: "I-click o I-scan",
+                qrDescription: "I-scan ang QR code na ito upang ma-access ang Employee Self-Service portal",
+                policyTitle: "TAUNANG AT EMERGENCY LEAVE",
+                policies: [
+                    {
+                        title: "Timeline ng Kahilingan ng Leave",
+                        content: "Ang lahat ng kahilingan sa leave ay dapat isumite nang hindi bababa sa 30 araw nang maaga sa pamamagitan ng ESS. Ang verbal / WhatsApp na mga kahilingan ay hindi tinatanggap."
+                    },
+                    {
+                        title: "Kinakailangan sa Pag-apruba",
+                        content: "Pag-apruba ng leave sa system ng Supervisor at Delivery Division Head. Mangyaring magplano ng leave lamang PAGKATAPOS NG PAG-APRUBA SA ESS."
+                    },
+                    {
+                        title: "Pagiging Karapat-dapat sa Taunang Leave",
+                        content: "Ang mga empleyado ay dapat makumpleto ang minimum na 18 buwan upang maging karapat-dapat sa leave. Ang leave ay para sa maximum na panahon na 60 araw at depende sa kanilang pagiging karapat-dapat. Ang lahat ng iba pang leave ay tutukuyin sa batayan ng kaso sa kaso."
+                    },
+                    {
+                        title: "Paglilinaw ng Nakabinbing Utang",
+                        content: "Ang mga empleyado na pupunta sa Taunang Leave ay dapat maglinis ng lahat ng nakabinbing halaga bago umalis. Maaaring may pangangailangan na magtago ng Guarantor kung may nakabinbing halagang babayaran o kung ang renewal ng visa ay dapat bayaran. Anumang pera / garantiya ay ilalabas kapag bumalik ang empleyado para sa trabaho at kumpletuhin ang kinakailangang mga formalidad."
+                    },
+                    {
+                        title: "Pagbubukod sa Service Charge",
+                        content: "Ang service charge ay HINDI ipapataw sa panahon ng taunang leave."
+                    },
+                    {
+                        title: "Dokumentasyon ng Emergency Leave",
+                        content: "Ang kinakailangang mga dokumento ay dapat isumite sa Supervisor at i-upload sa ESS nang maaga bago ang leave."
+                    },
+                    {
+                        title: "Multa sa Late Return",
+                        content: "Ang mga multa sa late return para sa pagbabalik nang mas huli kaysa sa aprubadong petsa ng leave, ay ilalapat ayon sa patakaran ng kumpanya."
+                    },
+                    {
+                        title: "Pagsunod at Pag-uugali",
+                        content: "Ang mga pag-apruba ay nakadepende sa mga kinakailangan sa operasyon, pag-apruba ng kliyente at abala at mahina na mga panahon."
+                    }
+                ],
+                footer: "Para sa mga katanungan, mangyaring makipag-usap sa iyong Delivery supervisor bago ka mag-apply para sa leave o para sa anumang paglilinaw.",
+                langName: "Tagalog"
+            }
+        };
+
+        let currentLang = 'en';
+        const langButton = document.getElementById('langButton');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangSpan = document.getElementById('currentLang');
+        const qrTitle = document.getElementById('qrTitle');
+        const clickScanText = document.getElementById('clickScanText');
+        const qrDescription = document.getElementById('qrDescription');
+        const policyTitle = document.getElementById('policyTitle');
+        const policyList = document.getElementById('policyList');
+        const footerText = document.getElementById('footerText');
+
+        langButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('active');
+        });
+
+        const langOptions = document.querySelectorAll('.lang-option');
+        langOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const lang = option.getAttribute('data-lang');
+                changeLanguage(lang);
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                langDropdown.classList.remove('active');
+            });
+        });
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            currentLangSpan.textContent = t.langName;
+            qrTitle.textContent = t.qrTitle;
+            clickScanText.textContent = t.clickScanText;
+            qrDescription.textContent = t.qrDescription;
+            policyTitle.textContent = t.policyTitle;
+            
+            const footerWords = t.footer.split('For queries,');
+            footerText.innerHTML = `<span class="footer-highlight">For queries,</span>${footerWords[1] || t.footer}`;
+            
+            policyList.innerHTML = '';
+            t.policies.forEach((policy, index) => {
+                const li = document.createElement('li');
+                li.className = 'policy-item';
+                li.style.setProperty('--item-index', index + 1);
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'policy-item-title';
+                titleDiv.textContent = policy.title;
+                
+                const contentP = document.createElement('p');
+                contentP.className = 'policy-item-content';
+                contentP.textContent = policy.content;
+                
+                li.appendChild(titleDiv);
+                li.appendChild(contentP);
+                policyList.appendChild(li);
+            });
+
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && translations[savedLang]) {
+                changeLanguage(savedLang);
+                langOptions.forEach(opt => {
+                    opt.classList.remove('active');
+                    if (opt.getAttribute('data-lang') === savedLang) {
+                        opt.classList.add('active');
+                    }
+                });
+            } else {
+                changeLanguage('en');
+            }
+        });
+    </script>
+</body>
+</html>
